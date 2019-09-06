@@ -4,6 +4,7 @@ let responseArray;
 let yourText = 'I like to hit you in the face when you ask me to stop.';
 let text;
 
+const inquirer = require('inquirer');
 const readline = require('readline');
 
 const rl = readline.createInterface({
@@ -75,6 +76,23 @@ rl.question('Whitch text shoud I analyze? ', answer => {
 
   req.write(sendText);
   req.end();
-
   rl.close();
+});
+
+var questions = [
+  {
+    type: 'input',
+    name: 'name',
+    message: 'Do you want to have another try? (y/n) ',
+  },
+];
+
+// try too loop
+
+inquirer.prompt(questions).then(answers => {
+  if (answers === `y`) {
+    sentimentAnalisys;
+  } else if ((answers !== `n`) | `y`) {
+    console.log(`Sorry that wasn't a correct answer. Try again. `);
+  }
 });
