@@ -7,15 +7,15 @@ let text;
 const inquirer = require('inquirer');
 const readline = require('readline');
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
-
 sentimentAnalisys();
 
 // main function
 function sentimentAnalisys() {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
+
   rl.question('Whitch text shoud I analyze? ', answer => {
     // TODO: Log the answer in a database
 
@@ -83,23 +83,26 @@ function sentimentAnalisys() {
     req.write(sendText);
     req.end();
     rl.close();
+
+    repeatFunc();
+    function repeatFunc() {
+      let answer;
+      inquirer
+        .prompt([
+          {
+            type: 'list',
+            name: 'answer',
+            message: '\nDo you want to have another try?',
+            choices: ['yes', 'no'],
+          },
+        ])
+        .then(answers => {
+          console.log('Answer:', answers.answer);
+          if (answers.answer === 'yes') {
+            sentimentAnalisys();
+          }
+        });
+    }
   });
-
-  inquirer
-    .prompt([
-      {
-        type: 'list',
-        name: 'answer',
-        message: 'Do you want to have another try?',
-        choices: ['yes', 'no'],
-      },
-    ])
-    .then(answers => {
-      console.info('Answer:', answer.yes);
-      if (answer.yes) {
-        sentimentAnalisys();
-      }
-    });
 }
-
 // look at the order, have to change some things
