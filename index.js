@@ -84,7 +84,6 @@ function sentimentAnalisys() {
     req.end();
     rl.close();
 
-    repeatFunc();
     function repeatFunc() {
       let answer;
       inquirer
@@ -103,6 +102,7 @@ function sentimentAnalisys() {
           }
         });
     }
+    repeatFunc();
   });
 }
 // look at the order, have to change some things
