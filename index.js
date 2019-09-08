@@ -16,7 +16,7 @@ function sentimentAnalisys() {
     output: process.stdout,
   });
 
-  rl.question('Whitch text shoud I analyze? ', answer => {
+  rl.question('Whitch text should I analyze? ', answer => {
     // TODO: Log the answer in a database
 
     var https = require('https');
