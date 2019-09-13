@@ -13,7 +13,7 @@ sentimentAnalisys();
 function sentimentAnalisys() {
   const rl = readline.createInterface({
     input: process.stdin,
-    output: process.stdout,
+    output: process.stdout
   });
 
   rl.question('Whitch text should I analyze? ', answer => {
@@ -21,7 +21,7 @@ function sentimentAnalisys() {
 
     var https = require('https');
     const sendText = JSON.stringify({
-      text: answer,
+      text: answer
     });
 
     var options = {
@@ -31,8 +31,8 @@ function sentimentAnalisys() {
 
       headers: {
         Referer: 'https://apidemo.theysay.io/',
-        'Content-Type': 'application/json',
-      },
+        'Content-Type': 'application/json'
+      }
     };
 
     var req = https.request(options, function(res) {
@@ -62,21 +62,22 @@ function sentimentAnalisys() {
             responseArray.sentiment.label +
             '. (I am ' +
             Math.round(responseArray.sentiment.confidence * 100) +
-            '% confident.)',
+            '% confident.)'
         );
         if (responseArray.sentiment.label === 'POSITIVE') {
           console.log(`Congratulations! I like your positive attitude!`);
         } else if (responseArray.sentiment.label === 'NEGATIVE') {
           console.log(
-            `Perhaps you should change your text to be more positive.`,
+            `Perhaps you should change your text to be more positive.`
           );
         }
 
         console.log(
           '\nI am ' +
             Math.round(responseArray.sentiment.confidence * 100) +
-            '% confident.',
+            '% confident.'
         );
+        repeatFunc();
       });
     });
 
@@ -92,8 +93,8 @@ function sentimentAnalisys() {
             type: 'list',
             name: 'answer',
             message: '\nDo you want to have another try?',
-            choices: ['yes', 'no'],
-          },
+            choices: ['yes', 'no']
+          }
         ])
         .then(answers => {
           console.log('Answer:', answers.answer);
@@ -102,7 +103,6 @@ function sentimentAnalisys() {
           }
         });
     }
-    repeatFunc();
   });
 }
 // look at the order, have to change some things
