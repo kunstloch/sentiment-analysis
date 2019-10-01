@@ -7,16 +7,16 @@ let text;
 const inquirer = require('inquirer');
 const readline = require('readline');
 
-sentimentAnalisys();
+sentimentAnalysis();
 
 // main function
-function sentimentAnalisys() {
+function sentimentAnalysis() {
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
   });
 
-  rl.question('Whitch text should I analyze? ', answer => {
+  rl.question('Which text should I analyze? ', answer => {
     // TODO: Log the answer in a database
 
     var https = require('https');
@@ -56,7 +56,7 @@ function sentimentAnalisys() {
         // console.log(typeof responseArray);
         // console.log(responseArray.sentiment.label);
 
-        console.log(`\nI analyze this text: ` + `"` + answer + `"\n`);
+        console.log(`\nI analyzed this text: ` + `"` + answer + `"\n`);
         console.log(
           'Your text is: ' +
             responseArray.sentiment.label +
@@ -99,7 +99,7 @@ function sentimentAnalisys() {
         .then(answers => {
           console.log('Answer:', answers.answer);
           if (answers.answer === 'yes') {
-            sentimentAnalisys();
+            sentimentAnalysis();
           }
         });
     }
