@@ -28,3 +28,8 @@ Output:
 Then: 
 
 ![commandline output](./sentiment02.PNG)
+
+
+### used libraries:
+
+[inquirer - npm](https://www.npmjs.com/package/inquirer)
