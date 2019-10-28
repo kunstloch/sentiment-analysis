@@ -1,11 +1,13 @@
+// sentiment analysis
+
+// import used modules
+const https = require('https');
+const inquirer = require('inquirer');
+const readline = require('readline');
+
 let responseString;
 let response;
 let responseArray;
-let yourText = 'I like to hit you in the face when you ask me to stop.';
-let text;
-
-const inquirer = require('inquirer');
-const readline = require('readline');
 
 sentimentAnalisys();
 
@@ -19,12 +21,11 @@ function sentimentAnalisys() {
   rl.question('Whitch text should I analyze? ', answer => {
     // TODO: Log the answer in a database
 
-    var https = require('https');
     const sendText = JSON.stringify({
       text: answer
     });
 
-    var options = {
+    let options = {
       host: 'apidemo.theysay.io',
       path: '/api/v1/sentiment',
       method: 'POST',
@@ -35,7 +36,7 @@ function sentimentAnalisys() {
       }
     };
 
-    var req = https.request(options, function(res) {
+    let req = https.request(options, function(res) {
       responseString = '';
 
       res.on('data', function(data) {
@@ -86,7 +87,6 @@ function sentimentAnalisys() {
     rl.close();
 
     function repeatFunc() {
-      let answer;
       inquirer
         .prompt([
           {
@@ -105,4 +105,3 @@ function sentimentAnalisys() {
     }
   });
 }
-// look at the order, have to change some things
