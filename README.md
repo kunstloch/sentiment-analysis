@@ -21,5 +21,10 @@ $ yarn
 
 `$ node index `
 
+Output: 
 
+![commandline output](./sentiment01.PNG)
 
+Then: 
+
+![commandline output](./sentiment02.PNG)
