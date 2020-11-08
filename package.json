@@ -1,5 +1,5 @@
 {
   "dependencies": {
-    "inquirer": "^7.0.0"
+    "inquirer": "7.0.0"
   }
 }
